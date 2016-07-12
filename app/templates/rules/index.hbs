@@ -1,0 +1,25 @@
+<h3>Regler för öppettider</h3>
+{{link-to 'Ny regel' 'rules.new'}}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Namn</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Type</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model as |rule|}}
+      <tr>
+        <td>{{#link-to 'rules.show' rule}}{{if rule.nameSv rule.nameSv "[Inget namn]"}}{{/link-to}}</td>
+        <td>{{moment-format rule.startdate 'YYYY-MM-DD'}}</td>
+        <td>{{moment-format rule.enddate 'YYYY-MM-DD'}}</td>
+        <td>{{rule.ruletype}}</td>
+        <td><button {{action 'delete' rule}} class="btn btn-link">Ta bort</button></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

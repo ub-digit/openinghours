@@ -1,0 +1,81 @@
+{{#if data.isEditing}}
+  <td>
+    <div class="form-group {{if data.errors.dayOfWeekIndex 'has-error'}}">
+    {{#x-select value=data.dayOfWeekIndex class="form-control"}}
+      {{#x-option value=null}}- Välj -{{/x-option}}
+      {{#each data.days as |day index|}}
+        {{#x-option value=day.index}}{{day.name}}{{/x-option}}
+      {{/each}}
+    {{/x-select}}
+    </div>
+  </td>
+  <td>
+    <div class="form-group form-inline {{if data.errors.openingTime 'has-error'}}">
+      {{#x-select value=data.openingTime disabled=data.closed class="form-control"}}
+        {{#x-option value="00:00"}}00:00{{/x-option}}
+        {{#x-option value="01:00"}}01:00{{/x-option}}
+        {{#x-option value="02:00"}}02:00{{/x-option}}
+        {{#x-option value="03:00"}}03:00{{/x-option}}
+        {{#x-option value="04:00"}}04:00{{/x-option}}
+        {{#x-option value="05:00"}}05:00{{/x-option}}
+        {{#x-option value="06:00"}}06:00{{/x-option}}
+        {{#x-option value="07:00"}}07:00{{/x-option}}
+        {{#x-option value="08:00"}}08:00{{/x-option}}
+        {{#x-option value="09:00"}}09:00{{/x-option}}
+        {{#x-option value="10:00"}}10:00{{/x-option}}
+        {{#x-option value="11:00"}}11:00{{/x-option}}
+        {{#x-option value="12:00"}}12:00{{/x-option}}
+        {{#x-option value="13:00"}}13:00{{/x-option}}
+        {{#x-option value="14:00"}}14:00{{/x-option}}
+        {{#x-option value="15:00"}}15:00{{/x-option}}
+        {{#x-option value="16:00"}}16:00{{/x-option}}
+        {{#x-option value="17:00"}}17:00{{/x-option}}
+        {{#x-option value="18:00"}}18:00{{/x-option}}
+        {{#x-option value="19:00"}}19:00{{/x-option}}
+        {{#x-option value="20:00"}}20:00{{/x-option}}
+        {{#x-option value="21:00"}}21:00{{/x-option}}
+        {{#x-option value="22:00"}}22:00{{/x-option}}
+        {{#x-option value="23:00"}}23:00{{/x-option}}
+      {{/x-select}}
+      -
+      {{#x-select value=data.closingTime disabled=data.closed class="form-control has-error"}}
+        {{#x-option value="00:00"}}00:00{{/x-option}}
+        {{#x-option value="01:00"}}01:00{{/x-option}}
+        {{#x-option value="02:00"}}02:00{{/x-option}}
+        {{#x-option value="03:00"}}03:00{{/x-option}}
+        {{#x-option value="04:00"}}04:00{{/x-option}}
+        {{#x-option value="05:00"}}05:00{{/x-option}}
+        {{#x-option value="06:00"}}06:00{{/x-option}}
+        {{#x-option value="07:00"}}07:00{{/x-option}}
+        {{#x-option value="08:00"}}08:00{{/x-option}}
+        {{#x-option value="09:00"}}09:00{{/x-option}}
+        {{#x-option value="10:00"}}10:00{{/x-option}}
+        {{#x-option value="11:00"}}11:00{{/x-option}}
+        {{#x-option value="12:00"}}12:00{{/x-option}}
+        {{#x-option value="13:00"}}13:00{{/x-option}}
+        {{#x-option value="14:00"}}14:00{{/x-option}}
+        {{#x-option value="15:00"}}15:00{{/x-option}}
+        {{#x-option value="16:00"}}16:00{{/x-option}}
+        {{#x-option value="17:00"}}17:00{{/x-option}}
+        {{#x-option value="18:00"}}18:00{{/x-option}}
+        {{#x-option value="19:00"}}19:00{{/x-option}}
+        {{#x-option value="20:00"}}20:00{{/x-option}}
+        {{#x-option value="21:00"}}21:00{{/x-option}}
+        {{#x-option value="22:00"}}22:00{{/x-option}}
+        {{#x-option value="23:00"}}23:00{{/x-option}}
+      {{/x-select}}
+    </div>
+  </td>
+  <td>
+    <div class="checkbox">
+      <label>{{input type='checkbox' checked=data.closed errors=data.errors.closed}}</label>
+    </div>
+    </td>
+
+  <td><button {{action 'save' data}} class="btn btn-link">Spara</button> <button {{action 'cancel' data}} class="btn btn-link">Avbryt</button></td>
+{{else}}
+  <td>{{data.dayString}}</td>
+  <td>{{data.openingTime}} - {{data.closingTime}}</td>
+  <td>{{data.closed}}</td>
+  <td><button {{action 'edit' data}} class="btn btn-link">Redigera</button> <button {{action 'delete' data}} class="btn btn-link">Ta bort</button></td>
+{{/if}}

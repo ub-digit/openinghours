@@ -1,0 +1,71 @@
+{{#if data.isEditing}}
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label for="nameSv" class="col-sm-2 control-label">Svenskt namn</label>
+      <div class="col-sm-10">
+        {{input value=data.nameSv type='text' class='form-control' id='nameSv'}}
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nameEn" class="col-sm-2 control-label">Engelskt namn</label>
+      <div class="col-sm-10">
+        {{input value=data.nameEn type='text' class='form-control' id='nameEn'}}
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="descriptionSv" class="col-sm-2 control-label">Svensk beskrivning</label>
+      <div class="col-sm-10">
+        {{input value=data.descriptionSv type='text' class='form-control' id='descriptionSv'}}
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="descriptionEn" class="col-sm-2 control-label">Engelsk beskrivning</label>
+      <div class="col-sm-10">
+        {{input value=data.descriptionEn type='text' class='form-control' id='descriptionEn'}}
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="ruletype" class="col-sm-2 control-label">Typ av öppettider</label>
+      <div class="col-sm-10">
+        {{#x-select value=data.ruletype id='ruletype' class='form-control'}}
+          {{#x-option value=null}}- Välj -{{/x-option}}
+          {{#x-option value='REGULAR'}}Ordinarie{{/x-option}}
+          {{#x-option value='EXCEPTION'}}Undantag{{/x-option}}
+        {{/x-select}}
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="startdate" class="col-sm-2 control-label">Startdatum</label>
+      <div class="col-sm-10">
+        {{pikaday-input value=data.startdate onSelection=(action (mut data.startdate)) useUTC=true format='YYYY-MM-DD' class='form-control'}}
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="enddate" class="col-sm-2 control-label">Startdatum</label>
+      <div class="col-sm-10">
+        {{pikaday-input value=data.enddate onSelection=(action (mut data.enddate)) useUTC=true format='YYYY-MM-DD' class='form-control'}}
+      </div>
+    </div>
+  </form>
+
+  <button {{action "save"}} class="btn btn-link">Spara</button>
+  <button {{action "cancel"}} class="btn btn-link">Avbryt</button>
+{{else}}
+  <dl class="dl-horizontal">
+    <dt>Svenskt namn:</dt>
+    <dd>{{data.nameSv}}</dd>
+    <dt>Engelskt namn:</dt>
+    <dd>{{data.nameEn}}</dd>
+    <dt>Svenskt beskrivning:</dt>
+    <dd>{{data.descriptionSv}}</dd>
+    <dt>Engelsk beksrivning:</dt>
+    <dd>{{data.descriptionEn}}</dd>
+    <dt>Typ av öppettider:</dt>
+    <dd>{{data.ruletype}}</dd>
+    <dt>Startdatum:</dt>
+    <dd>{{moment-format data.startdate 'YYYY-MM-DD'}}</dd>
+    <dt>Slutdatum:</dt>
+    <dd>{{moment-format data.enddate 'YYYY-MM-DD'}}</dd>
+  </dl>
+  <button {{action "edit"}} class="btn btn-link">Redigera</button>
+{{/if}}

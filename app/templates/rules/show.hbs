@@ -1,0 +1,26 @@
+<h3>Regel</h3>
+
+{{rule-meta data=model save=(action 'saveRule') cancel=(action 'cancelEditRule')}}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Dag</th>
+      <th>Öppnar/Stänger</th>
+      <th>Stängt?</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each sortedOpeningHours as |hour|}}
+      {{opening-hour-day-row data=hour}}
+    {{/each}}
+  </tbody>
+</table>
+
+<button {{action 'addOpeningHour'}} class="btn btn-primary {{unless model.canCreateNewDay 'disabled'}}">Lägg till dag</button>
+
+
+<div>
+  {{link-to 'Tillbaka' 'rules'}}
+</div>

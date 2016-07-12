@@ -1,0 +1,34 @@
+{{#if data.isEditing}}
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label for="nameSv" class="col-sm-2 control-label">Svenskt namn</label>
+      <div class="col-sm-10">
+        {{input value=data.nameSv type='text' class='form-control' id='nameSv'}}
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nameEn" class="col-sm-2 control-label">Engelskt namn</label>
+      <div class="col-sm-10">
+        {{input value=data.nameEn type='text' class='form-control' id='nameEn'}}
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="sigel" class="col-sm-2 control-label">Sigel</label>
+      <div class="col-sm-10">
+        {{input value=data.sigel type='text' class='form-control' id='sigel'}}
+      </div>
+    </div>
+  </form>
+  <button {{action 'save'}} class="btn btn-link">Spara</button>
+  <button {{action 'cancel'}} class="btn btn-link">Avbryt</button>
+{{else}}
+<dl class="dl-horizontal">
+  <dt>Svenskt namn:</dt>
+  <dd>{{data.nameSv}}</dd>
+  <dt>Engelskt namn:</dt>
+  <dd>{{data.nameEn}}</dd>
+  <dt>Sigel:</dt>
+  <dd>{{data.sigel}}</dd>
+</dl>
+<button {{action 'edit'}} class="btn btn-link">Redigera</button>
+{{/if}}

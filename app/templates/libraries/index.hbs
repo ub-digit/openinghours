@@ -1,0 +1,22 @@
+<div class="row">
+  <h1>Bibliotek</h1>
+  {{link-to 'Nytt bibliotek' 'libraries.new'}}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Namn</th>
+        <th>Sigel</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each model as |library|}}
+      <tr>
+        <td>{{link-to library.nameSv 'rules' library}}</td>
+        <td>{{library.sigel}}</td>
+        <td><button {{action 'delete' library}} class="btn btn-link">Ta bort</button></td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</div>

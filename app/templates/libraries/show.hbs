@@ -1,0 +1,8 @@
+{{link-to '< Tillbaka till alla bibliotek' 'libraries'}}
+<h1>{{model.nameSv}}</h1>
+
+{{library-meta data=model save=(action 'saveLibrary') cancel=(action 'cancelEditLibrary')}}
+
+<h2>Öppet kommande 7 dagar</h2>
+
+{{outlet}}
