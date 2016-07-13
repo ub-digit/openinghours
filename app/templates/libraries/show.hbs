@@ -5,4 +5,8 @@
 
 <h2>Öppet kommande 7 dagar</h2>
 
+{{#each nextSevenDays as |day|}}
+  {{opening-hour-display date=day library=model}}
+{{/each}}
+
 {{outlet}}

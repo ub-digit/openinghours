@@ -1,0 +1,5 @@
+{{#each openingHour as |hour|}}
+  {{moment-format date 'YYYY-MM-DD'}}: {{hour.openingTime}}-{{hour.closingTime}}
+{{/each}}
+
+{{log openingHour}}

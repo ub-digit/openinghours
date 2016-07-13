@@ -1,6 +1,16 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 export default Ember.Controller.extend({
+
+  nextSevenDays: [],
+
+
+  init() {
+    for (var i = 0; i < 7; i++) {
+      this.get('nextSevenDays').push(moment().add(i, 'days'));
+    }
+  },
 
   actions: {
 
